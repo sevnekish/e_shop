@@ -4,14 +4,8 @@ class Order::CalculateDiscount
     Discount::MouseAndKeyboard,
     Discount::TenWhite
   ]
-
-  attr_reader: :order
-
-  def initialize(order)
-    @order = order
-  end
   
-  def perform
+  def self.call(order)
     amount = 0
 
     DISCOUNTS.each do |discount|

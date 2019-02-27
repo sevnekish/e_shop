@@ -24,5 +24,7 @@ module EShop
     
     config.load_defaults 5.2
     config.api_only = true
+
+    config.eager_load_paths += %W(#{config.root}/app/forms)
   end
 end

@@ -15,6 +15,10 @@ gem 'active_model_serializers'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem "reform", ">= 2.3.0.rc1"
+gem "reform-rails"
+gem "dry-validation"
+
 group :development, :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'

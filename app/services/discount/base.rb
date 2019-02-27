@@ -1,5 +1,5 @@
 class Discount::Base
-  attr_reader: :order_items
+  attr_reader :order_items
 
   def initialize(order_items)
     @order_items = order_items

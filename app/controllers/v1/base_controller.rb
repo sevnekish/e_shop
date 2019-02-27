@@ -3,6 +3,10 @@ class V1::BaseController < ApplicationController
     render_404(e.model)
   end
 
+  rescue_from Exception::RecordInvalidError do |e|
+    render_error(e.instance_errors, 422)
+  end
+
   def respond_with_serialized_resource_for(resource = nil, options = {})
     # defaults
     render_args = {
