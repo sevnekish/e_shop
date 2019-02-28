@@ -3,12 +3,12 @@ class Discount::FoodAfterSix < Discount::Base
   AMOUNT = 5
   
   def is_applicable?
-    from_categories?('food') && after_six?
+    from_categories?('food') && after_six_pm?
   end
 
   private
 
-  def after_six?
-    Time.now.hour >= 18
+  def after_six_pm?
+    Time.parse("06:00 pm") < Time.now
   end
 end

@@ -18,7 +18,7 @@ RSpec.describe Order::Create do
     end
     let(:discount) { 0 }
 
-    subject { Order::Create.new(order_params).perform! }
+    subject { described_class.new(order_params).perform! }
     
     before do
       allow(Order::CalculateDiscount)

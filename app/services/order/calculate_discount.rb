@@ -9,7 +9,7 @@ class Order::CalculateDiscount
     amount = 0
 
     DISCOUNTS.each do |discount|
-      next unless discount.new(order.order_items).is_applicable?
+      next unless discount.new(order).is_applicable?
       amount += discount::AMOUNT
     end
 

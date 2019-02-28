@@ -14,26 +14,26 @@ RSpec.describe Order::CalculateDiscount do
     let(:discount_2) { double :discount_2, is_applicable?: false }
     let(:discount_3) { double :discount_3, is_applicable?: true }
 
-    subject { Order::CalculateDiscount.call(order) }
+    subject { described_class.call(order) }
     
     before do
       allow(Discount::FoodAfterSix)
         .to receive(:new)
-        .with(order.order_items)
+        .with(order)
         .and_return(discount_1)
     end
 
     before do
       allow(Discount::MouseAndKeyboard)
         .to receive(:new)
-        .with(order.order_items)
+        .with(order)
         .and_return(discount_2)
     end
 
     before do
       allow(Discount::TenWhite)
         .to receive(:new)
-        .with(order.order_items)
+        .with(order)
         .and_return(discount_3)
     end
 

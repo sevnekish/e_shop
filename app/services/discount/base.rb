@@ -1,8 +1,8 @@
 class Discount::Base
   attr_reader :order_items
 
-  def initialize(order_items)
-    @order_items = order_items
+  def initialize(order)
+    @order_items = order.order_items
   end
 
   def is_applicable?; end
@@ -10,7 +10,7 @@ class Discount::Base
   protected
 
   def total_quantity
-    order_items.inject(0) { |sum, ord_item| sum + ord_item.quantity }
+    order_items.inject(0) { |sum, oi| sum + oi.quantity }
   end
 
   def from_categories?(categories)

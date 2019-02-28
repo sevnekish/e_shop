@@ -12,7 +12,7 @@ class Order::Create
     define_total
     apply_discount
     persist_order
-    update_items_quantity
+    update_ordered_items_quantity
     order
   end
 
@@ -51,7 +51,7 @@ class Order::Create
     order.save
   end
 
-  def update_items_quantity
+  def update_ordered_items_quantity
     order.order_items.each do |oi|
       item = oi.item
       # TODO: move to a separate operation
