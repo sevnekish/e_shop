@@ -13,14 +13,14 @@ class Order::Create
     apply_discount
     persist_order
     update_ordered_items_quantity
-    order
+    order.model
   end
 
   private
 
   def prepare_params!
     order_params[:order_items].map! do |oi|
-      { item: Item.find(oi[:item_id]), quantity: oi[:quantity] }
+      { item: Item.find(oi[:item_id]), quantity: oi[:quantity].to_i }
     end
     order_params[:total] = 0
     order_params[:discount] = 0
