@@ -21,9 +21,9 @@ FactoryBot.define do
       item_2 = create :item, price: 300
       item_3 = create :item, price: 100
 
-      oi_1 = create :order_item, order: order, item: item_1, quantity: 3
-      oi_2 = create :order_item, order: order, item: item_2, quantity: 2
-      oi_3 = create :order_item, order: order, item: item_3, quantity: 4
+      create :order_item, order: order, item: item_1, quantity: 3
+      create :order_item, order: order, item: item_2, quantity: 2
+      create :order_item, order: order, item: item_3, quantity: 4
 
       order.update(total: 1360)
     end

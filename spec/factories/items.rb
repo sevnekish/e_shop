@@ -17,6 +17,6 @@ FactoryBot.define do
     title { Faker::Name.name }
     category { Item.categories.keys.sample }
     color { Item.colors.keys.sample }
-    price { rand 100..20000 }
+    price { rand 100..20_000 }
   end
 end

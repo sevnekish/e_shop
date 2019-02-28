@@ -2,7 +2,7 @@
 class Discount::MouseAndKeyboard < Discount::Base
   AMOUNT = 3
 
-  def is_applicable?
-    total_quantity == 2 && from_categories?(['keyboard', 'mouse'])
+  def applicable?
+    total_quantity == 2 && from_categories?(%w(mouse keyboard))
   end
 end

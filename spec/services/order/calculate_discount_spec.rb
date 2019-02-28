@@ -10,12 +10,12 @@ RSpec.describe Order::CalculateDiscount do
         order_item_2
       ]
     end
-    let(:discount_1) { double :discount_1, is_applicable?: true }
-    let(:discount_2) { double :discount_2, is_applicable?: false }
-    let(:discount_3) { double :discount_3, is_applicable?: true }
+    let(:discount_1) { double :discount_1, applicable?: true }
+    let(:discount_2) { double :discount_2, applicable?: false }
+    let(:discount_3) { double :discount_3, applicable?: true }
 
     subject { described_class.call(order) }
-    
+
     before do
       allow(Discount::FoodAfterSix)
         .to receive(:new)

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Discount::MouseAndKeyboard do
-  describe '.is_applicable?' do
+  describe '.applicable?' do
     let(:category_1) { :mouse }
     let(:category_2) { :keyboard }
     let!(:item_1) { create :item, price: 100, category: category_1 }
@@ -18,7 +18,7 @@ RSpec.describe Discount::MouseAndKeyboard do
       ]
     end
 
-    subject { described_class.new(order).is_applicable? }
+    subject { described_class.new(order).applicable? }
 
     it 'returns true' do
       expect(subject).to be_truthy

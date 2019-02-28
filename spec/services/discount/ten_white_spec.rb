@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Discount::TenWhite do
-  describe '.is_applicable?' do
+  describe '.applicable?' do
     let(:color_1) { :white }
     let(:color_2) { :white }
     let!(:item_1) { create :item, price: 100, color: color_1 }
@@ -18,7 +18,7 @@ RSpec.describe Discount::TenWhite do
       ]
     end
 
-    subject { described_class.new(order).is_applicable? }
+    subject { described_class.new(order).applicable? }
 
     it 'returns true' do
       expect(subject).to be_truthy

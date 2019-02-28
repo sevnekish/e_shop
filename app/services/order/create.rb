@@ -32,18 +32,19 @@ class Order::Create
 
   def validate_params!
     return if order.validate(order_params)
+
     raise Exception::RecordInvalidError.new(order.errors.messages)
   end
 
   def define_total
-    order.total = order.order_items.inject(0) { |sum, oi| sum+= oi.item.price * oi.quantity }
+    order.total = order.order_items.inject(0) { |sum, oi| sum + oi.item.price * oi.quantity }
   end
 
   def apply_discount
     discount = Order::CalculateDiscount.call(order)
-    return if discount == 0
-    
-    order.total = (order.total * (1.0 - discount/100.0)).round
+    return if discount.zero?
+
+    order.total = (order.total * (1.0 - discount / 100.0)).round
     order.discount = discount
   end
 

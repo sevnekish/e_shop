@@ -5,7 +5,7 @@ class Discount::Base
     @order_items = order.order_items
   end
 
-  def is_applicable?; end
+  def applicable?; end
 
   protected
 
@@ -14,6 +14,6 @@ class Discount::Base
   end
 
   def from_categories?(categories)
-    (order_items.map(&:item).pluck(:category).uniq  - [*categories]) == []
+    (order_items.map(&:item).pluck(:category).uniq - [*categories]) == []
   end
 end

@@ -9,7 +9,7 @@ RSpec.describe Order::Create do
     let(:item_id_1) { item_1.id }
     let(:item_id_2) { item_2.id }
     let(:order_params) do
-      { 
+      {
         order_items: [
           { item_id: item_id_1, quantity: 2 },
           { item_id: item_id_2, quantity: 1 }
@@ -19,13 +19,12 @@ RSpec.describe Order::Create do
     let(:discount) { 0 }
 
     subject { described_class.new(order_params).perform! }
-    
+
     before do
       allow(Order::CalculateDiscount)
         .to receive(:call)
         .and_return(discount)
     end
-
 
     it 'creates new order' do
       expect(subject).to be_persisted
@@ -49,7 +48,7 @@ RSpec.describe Order::Create do
         expect(subject.discount).to eq(50)
         expect(subject.order_items.count).to eq(2)
       end
-  
+
       it 'updates quantity of ordered items' do
         subject
         expect(item_1.reload.quantity).to eq(0)

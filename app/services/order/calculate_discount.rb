@@ -3,13 +3,14 @@ class Order::CalculateDiscount
     Discount::FoodAfterSix,
     Discount::MouseAndKeyboard,
     Discount::TenWhite
-  ]
-  
+  ].freeze
+
   def self.call(order)
     amount = 0
 
     DISCOUNTS.each do |discount|
-      next unless discount.new(order).is_applicable?
+      next unless discount.new(order).applicable?
+
       amount += discount::AMOUNT
     end
 

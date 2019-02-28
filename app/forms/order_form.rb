@@ -2,7 +2,7 @@ class OrderForm < Reform::Form
   property :total
   property :discount
 
-  collection :order_items, populator: -> (collection:, **) {
+  collection :order_items, populator: ->(collection:, **) {
     collection.append(OrderItem.new)
   } do
     property :item
