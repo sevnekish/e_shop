@@ -36,6 +36,6 @@ end
 group :test do
   gem 'timecop'
   gem 'rspec-its'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '4.0.1'
   gem 'simplecov', require: false
 end
